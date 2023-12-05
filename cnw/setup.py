@@ -34,14 +34,8 @@ def setup(data_root, with_mapping):
     shutil.move(os.path.join(data_root, 'bboxes'), os.path.join(data_root, 'CropAndWeed'))
     shutil.move(os.path.join(data_root, 'CropAndWeed'), os.path.join(data_root, 'bboxes', 'CropAndWeed'))
 
-    if with_mapping:
-        for dataset in datasets.DATASETS:
-            if dataset != 'CropAndWeed':
-                map_dataset(os.path.join(data_root, 'bboxes'), os.path.join(data_root, 'labelIds'), 'CropAndWeed',
-                            dataset)
-
-    for image_name in os.listdir('../images'):
-        shutil.copy(os.path.join('../images', image_name), os.path.join(data_root, 'images', image_name))
+    map_dataset(os.path.join(data_root, 'bboxes'), os.path.join(data_root, 'labelIds'), 'CropAndWeed', "CropOrWeed2")
+    
 
 
 def main():
